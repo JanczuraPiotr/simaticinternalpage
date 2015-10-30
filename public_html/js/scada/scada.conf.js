@@ -6,7 +6,8 @@ var scada = scada || {};
 scada.cf = {
 
 	url : {
-		raport : 'raport.html'
+		raport : 'raport.html',
+		update : 'update.html',
 	},
 
 	dom : {

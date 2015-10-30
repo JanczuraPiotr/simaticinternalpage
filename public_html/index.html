@@ -32,14 +32,14 @@
 		<div id="inputs">
 			<table>
 				<tbody>
-					<tr><td>wejście 0</td><td><input type="checkbox" name="I_0_0" id="i-0-0" disabled="disabled"></td></tr>
-					<tr><td>wejście 1</td><td><input type="checkbox" name="I_0_1" id="i-0-1" disabled="disabled"></td></tr>
-					<tr><td>wejście 2</td><td><input type="checkbox" name="I_0_2" id="i-0-2" disabled="disabled"></td></tr>
-					<tr><td>wejście 3</td><td><input type="checkbox" name="I_0_3" id="i-0-3" disabled="disabled"></td></tr>
-					<tr><td>wejście 4</td><td><input type="checkbox" name="I_0_4" id="i-0-4" disabled="disabled"></td></tr>
-					<tr><td>wejście 5</td><td><input type="checkbox" name="I_0_5" id="i-0-5" disabled="disabled"></td></tr>
-					<tr><td>wejście 6</td><td><input type="checkbox" name="I_0_6" id="i-0-6" disabled="disabled"></td></tr>
-					<tr><td>wejście 7</td><td><input type="checkbox" name="I_0_7" id="i-0-7" disabled="disabled"></td></tr>
+					<tr><td>wejście 0</td><td><input type="checkbox" name="I_0_0" id="i-0-0" data-type="I" data-port="0" data-bit="0" disabled="disabled"></td></tr>
+					<tr><td>wejście 1</td><td><input type="checkbox" name="I_0_1" id="i-0-1" data-type="I" data-port="0" data-bit="1" disabled="disabled"></td></tr>
+					<tr><td>wejście 2</td><td><input type="checkbox" name="I_0_2" id="i-0-2" data-type="I" data-port="0" data-bit="2" disabled="disabled"></td></tr>
+					<tr><td>wejście 3</td><td><input type="checkbox" name="I_0_3" id="i-0-3" data-type="I" data-port="0" data-bit="3" disabled="disabled"></td></tr>
+					<tr><td>wejście 4</td><td><input type="checkbox" name="I_0_4" id="i-0-4" data-type="I" data-port="0" data-bit="4" disabled="disabled"></td></tr>
+					<tr><td>wejście 5</td><td><input type="checkbox" name="I_0_5" id="i-0-5" data-type="I" data-port="0" data-bit="5" disabled="disabled"></td></tr>
+					<tr><td>wejście 6</td><td><input type="checkbox" name="I_0_6" id="i-0-6" data-type="I" data-port="0" data-bit="6" disabled="disabled"></td></tr>
+					<tr><td>wejście 7</td><td><input type="checkbox" name="I_0_7" id="i-0-7" data-type="I" data-port="0" data-bit="7" disabled="disabled"></td></tr>
 				</tbody>
 			</table>
 		</div>
@@ -49,7 +49,7 @@
 					<tr>
 						<td>zmienna Byte </td>
 						<td>
-							<input type="number" min="-120" max="120" data-mem-type="D" data-var-type="1" data-var-code="0" class="liczba byte" id="d-byte-input" />
+							<input type="number" min="-120" max="120" data-type="D" data-name='zmiennaByte' class="liczba byte" id="d-byte-input" />
 						</td>
 						<td>
 							<button data-name="D_Byte" id="D-Byte-set">Ustaw</button>
@@ -58,7 +58,7 @@
 					<tr>
 						<td>zmienna Int  </td>
 						<td>
-							<input type="number" min="-32000" max="32000" data-mem-type="D" data-var-type="2" data-var-code="1"   class="liczba int"  id="d-int-input"  />
+							<input type="number" min="-32000" max="32000" data-type="D" data-name="zmiennaInt" class="liczba int"  id="d-int-input"  />
 						</td>
 						<td>
 							<button data-name="D_Int" id="D-Int-set">Ustaw</button>
@@ -67,7 +67,7 @@
 					<tr>
 						<td>zmienna DInt </td>
 						<td>
-							<input type="number" min="-2000000000" max="2000000000" data-mem-type="D" data-var-type="3" data-var-code="2"  class="liczba dint" id="d-dint-input" />
+							<input type="number" min="-2000000000" max="2000000000" data-type="D" data-name="zmiennaDInt" class="liczba dint" id="d-dint-input" />
 						</td>
 						<td>
 							<button data-name="D_DInt" id="D-DInt-set">Ustaw</button>
@@ -76,7 +76,7 @@
 					<tr>
 						<td>zmienna Real </td>
 						<td>
-							<input type="number" min="-1000" max="1000" step="0.001" data-mem-type="D" data-var-type="4" data-var-code="3"  class="liczba real" id="d-real-input"/>
+							<input type="number" min="-1000" max="1000" step="0.001" data-type="D" data-name='zmiennaReal'  class="liczba real" id="d-real-input"/>
 						</td>
 						<td>
 							<button data-name="D_Real" id="D-Real-set">Ustaw</button>
@@ -88,16 +88,14 @@
 		<div id="outputs">
 			<table>
 				<tbody>
-					<tr><td>wyjście 0</td><td><input type="checkbox" name="Q_0" id="q-0-0" class="output" data-port="0" data-bit="0"></td></tr>
-					<tr><td>wyjście 1</td><td><input type="checkbox" name="Q_1" id="q-0-1" class="output" data-port="0" data-bit="1"></td></tr>
-					<tr><td>wyjście 2</td><td><input type="checkbox" name="Q_2" id="q-0-2" class="output" data-port="0" data-bit="2"></td></tr>
-					<tr><td>wyjście 3</td><td><input type="checkbox" name="Q_3" id="q-0-3" class="output" data-port="0" data-bit="3"></td></tr>
-					<tr><td>wyjście 4</td><td><input type="checkbox" name="Q_4" id="q-0-4" class="output" data-port="0" data-bit="4"></td></tr>
-					<tr><td>wyjście 5</td><td><input type="checkbox" name="Q_5" id="q-0-5" class="output" data-port="0" data-bit="5"></td></tr>
+					<tr><td>wyjście 0</td><td><input type="checkbox" name="Q_0_0" id="q-0-0" class="output" data-type="Q" data-port="0" data-bit="0"></td></tr>
+					<tr><td>wyjście 1</td><td><input type="checkbox" name="Q_0_1" id="q-0-1" class="output" data-type="Q" data-port="0" data-bit="1"></td></tr>
+					<tr><td>wyjście 2</td><td><input type="checkbox" name="Q_0_2" id="q-0-2" class="output" data-type="Q" data-port="0" data-bit="2"></td></tr>
+					<tr><td>wyjście 3</td><td><input type="checkbox" name="Q_0_3" id="q-0-3" class="output" data-type="Q" data-port="0" data-bit="3"></td></tr>
+					<tr><td>wyjście 4</td><td><input type="checkbox" name="Q_0_4" id="q-0-4" class="output" data-type="Q" data-port="0" data-bit="4"></td></tr>
+					<tr><td>wyjście 5</td><td><input type="checkbox" name="Q_0_5" id="q-0-5" class="output" data-type="Q" data-port="0" data-bit="5"></td></tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
-
-  </body>
 </html>

@@ -89,14 +89,12 @@ scada.Panel = function(){
 		}
 	};
 	def.priv.thread = function(){
-		console.log('thread');
 		$.ajax({
 			url: scada.cf.url.raport,
 			dataType : 'text',
 			async: false,
 			success : function (response, status, xhr){
 				var r = JSON.parse(response);
-				console.log(r);
 				def.priv.newD(r.D);
 				def.priv.newI(r.I);
 				def.priv.newQ(r.Q);
@@ -111,66 +109,45 @@ scada.Panel = function(){
 		})
 	};
 	def.priv.onButtonD = function(selector, eventTypem, handler){
-//		console.info(selector);
-//		console.info(eventTypem);
-//		console.info(handler);
-
-		var memType = S7.D;
-		var varType = $(this).parent().parent().find('input').data('var-type');
-		var varCode = $(this).parent().parent().find('input').data('var-code');
+		var varName = $(this).parent().parent().find('input').data('name');
 		var varVal = $(this).parent().parent().find('input').val();
+		var data = {};
 
+		data[varName] = varVal;
 
 		$.ajax({
-			url : 'set-d',
-			dataType : 'json',
+			url : scada.cf.url.update,
+			dataType : 'text',
 			async : false,
-			data : {
-				memType : memType,
-				varType : varType,
-				varCode : varCode,
-				varVal  : varVal
-			},
+			type : 'post',
+			data : data,
 			success : function(response,status,xhr){
-				// @todo obsłóż
-//				console.log('scada.d.set.success');
-//				console.log(response);
-//				console.log(status);
+					var r = JSON.parse(response);
 			},
 			error : function(jqXHR, status, error){
 				// @todo obsłóż
 				console.error('scada.d.set.error');
-//				console.log(jqXHR)
-//				console.log(status);
-//				console.log(error);
 			}
 		});
 
 	};
 	def.priv.onClickQ = function(selector, eventType,handler){
-		var memType = S7.Q;
-		var varCode = 0; // @todo pobrać kod zmiennej z SimaticServer
-		var port = $(this).data('port');
-		var bit = $(this).data('bit');
 		var onOff;
+		var varName = $(this).attr('name');
+		var data = {};
 
 		if( $(this).prop('checked') ){
 			onOff = 1;
 		}else{
 			onOff = 0;
 		}
+		data[varName] = onOff;
 
 		$.ajax({
-			url : 'switch-port',
-			contentType: 'application/json; charset=UTF-8',
-			dataType:'json',
+			url : scada.cf.url.update,
+			dataType:'text',
 			async : false,
-			data : {
-				memType : memType,
-				varCode : varCode,
-				port    : port,
-				bit     : bit,
-			},
+			data : data,
 			success : function(response,status,xhr){
 				// @todo obsłóż
 				console.log('scada.port.set.success');
