@@ -12,7 +12,7 @@ scada.Panel = function(){
 		zmiennaByte : 0,
 		zmiennaInt  : 0,
 		zmiennaDInt : 0,
-		zmiennaReal : 0,
+		zmiennaReal : 0
 	};
 	def.I = {
 		// port 0
@@ -24,7 +24,7 @@ scada.Panel = function(){
 			4 : 0,
 			5 : 0,
 			6 : 0,
-			7 : 0,
+			7 : 0
 		}
 	};
 	def.Q = {

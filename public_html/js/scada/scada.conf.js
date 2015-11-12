@@ -3,6 +3,7 @@
  * Konfiguracja modułu scada
  */
 var scada = scada || {};
+
 scada.cf = {
 
 	url : {

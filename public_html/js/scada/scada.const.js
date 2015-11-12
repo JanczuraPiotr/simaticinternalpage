@@ -3,4 +3,4 @@
 var scada = scada || {};
 scada.ct = {
 
-}
+};

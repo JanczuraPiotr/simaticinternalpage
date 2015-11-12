@@ -1,6 +1,7 @@
 'use strict';
 
 var pjpl = pjpl || {};
+
 pjpl.bits = pjpl.bits || {
 	maska : {
 		_______F :         15,
@@ -52,4 +53,4 @@ pjpl.bits = pjpl.bits || {
 		BIT_30   : 1073741824,
 		BIT_31   : 2147483648
 	}
-}
+};
