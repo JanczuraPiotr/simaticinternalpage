@@ -1,7 +1,5 @@
-'use strict';
-/**
- * Konfiguracja modułu scada
- */
+	'use strict';
+
 var scada = scada || {};
 
 scada.cf = {
@@ -68,6 +66,6 @@ scada.cf = {
 					cl : ''
 				}
 			}
-		},
+		}
 	}
-}
+};

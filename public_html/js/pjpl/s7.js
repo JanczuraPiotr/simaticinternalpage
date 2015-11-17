@@ -1,5 +1,8 @@
 'use strict';
 
+/**
+ * Kody typów bloków pamięci sterownika.
+ */
 var S7 = {
 	I : 129, // 0x81
 	Q : 130, // 0x82

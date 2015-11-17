@@ -8,18 +8,17 @@ scada.Panel = function(){
 	def.elementInEdit = null;
 	def.publ = {};
 	def.priv = {};
-	def.D = {
+	def.D = { // Blok danych.
 		zmiennaByte : 0,
 		zmiennaInt  : 0,
 		zmiennaDInt : 0,
 		zmiennaReal : 0
 	};
 	def.I = {
-		// port 0
-		0 : {
-			0 : 0,
-			1 : 0,
-			2 : 0,
+		0 : { // port wejściowy o numerze 0
+			0 : 0, // bit 0 portu
+			1 : 0, // bit 1 portu
+			2 : 0, // ...
 			3 : 0,
 			4 : 0,
 			5 : 0,
@@ -28,10 +27,10 @@ scada.Panel = function(){
 		}
 	};
 	def.Q = {
-		0 : {
-			0 : 0,
-			1 : 0,
-			2 : 0,
+		0 : { // port wyjściowy o numerzez 0
+			0 : 0, // bit 0 portu
+			1 : 0, // bit 1 portu
+			2 : 0, // ....
 			3 : 0,
 			4 : 0,
 			5 : 0
@@ -98,20 +97,18 @@ scada.Panel = function(){
 				def.priv.newD(r.D);
 				def.priv.newI(r.I);
 				def.priv.newQ(r.Q);
-			},
-			error : function(jqXHR, status, error){
-				console.error('scada.raport.error');
-				console.log(jqXHR)
-				console.log(status);
-				console.log(error);
 			}
-
-		})
+		});
 	};
 	def.priv.onButtonD = function(selector, eventTypem, handler){
 		var varName = $(this).parent().parent().find('input').data('name');
 		var varVal = $(this).parent().parent().find('input').val();
 		var data = {};
+
+		if( ! document.cookie ){
+			// Modyfikować zmienne może tylko zalogowany urzytkownik. Wracamy na stronę logowania.
+			window.location = cf.url.main;
+		}
 
 		data[varName] = varVal;
 
@@ -122,11 +119,12 @@ scada.Panel = function(){
 			type : 'post',
 			data : data,
 			success : function(response,status,xhr){
-					var r = JSON.parse(response);
+				var r = JSON.parse(response);
+				def.priv.newD(r.D);
 			},
 			error : function(jqXHR, status, error){
 				// @todo obsłóż
-				console.error('scada.d.set.error');
+				console.error('scada.D.set.error');
 			}
 		});
 
@@ -135,6 +133,11 @@ scada.Panel = function(){
 		var onOff;
 		var varName = $(this).attr('name');
 		var data = {};
+
+		if( ! document.cookie ){
+			// Modyfikować zmienne może tylko zalogowany urzytkownik. Wracamy na stronę logowania.
+			window.location = cf.url.main;
+		}
 
 		if( $(this).prop('checked') ){
 			onOff = 1;
@@ -149,17 +152,12 @@ scada.Panel = function(){
 			async : false,
 			data : data,
 			success : function(response,status,xhr){
-				// @todo obsłóż
-				console.log('scada.port.set.success');
-//				console.log(response);
-//				console.log(status);
+				var r = JSON.parse(response);
+				def.priv.newQ(r.Q);
 			},
 			error : function(jqXHR, status, error){
 				// @todo obsłóż
-				console.error('scada.port.set.error');
-//				console.log(jqXHR)
-//				console.log(status);
-//				console.log(error);
+				console.error('scada.Qset.error');
 			}
 		});
 	}
@@ -177,7 +175,6 @@ scada.Panel = function(){
 		$(scada.cf.dom.panel.variables.me.id).delegate('input[type=text]','blur',def.priv.inputStopEdit);
 		def.run = setInterval(def.priv.thread,scada.cf.dom.panel.me.refreshInterval_ms,def);
 	};
-
 
 	def.priv.init();
 	return def.publ;

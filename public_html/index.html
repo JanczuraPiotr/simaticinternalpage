@@ -4,34 +4,43 @@
       <meta charset="utf-8">
       <title>PLC -JS</title>
 
+			<link href="css/pjpl.css" type="text/css" rel="stylesheet"/>
+			
 			<!--
-			<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-			<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+			<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+			<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 			-->
 
-			<link href="css/pjpl.css" type="text/css" rel="stylesheet"/>
+			<script src="js/conf.js"></script>
 
     </head>
   <body>
+		<script>
+			if( document.cookie ){
+				window.location = cf.url.scada;
+			}
+		</script>
 
-	<center>
-		<form enctype="text/plain" action="https://192.168.1.150/FormLogin" method="POST" id="Login_Area_Form" name="LoginForm" autocomplete="off">
-			<input type="hidden" name="Redirection" value="https://192.168.1.150/awp/scada/scada.html">
-			<table id="login_box_table">
-				<tbody>
-					<tr>
-						<td class="Login_Table_Cell_Name">Name</td>
-						<td class="Login_Table_Cell_Input_Name"><input type="text" name="Login" maxlength="30" class="Login_Input"></td>
-					</tr>
-					<tr>
-						<td class="Login_Table_Cell">Password</td>
-						<td class="Login_Table_Cell_Input"><input type="password" name="Password" maxlength="30" class="Login_Input"></td>
-					</tr>
+		<center>
+			<!-- formularz logowania do sterownika wykonany na wzór formularza ze strony domyślnej sterownika -->
+			<form enctype="text/plain" action="https://192.168.1.150/FormLogin" method="POST" name="LoginForm" autocomplete="off">
+				<input type="hidden" name="Redirection" value="https://192.168.1.150/awp/scada/scada.html">
+				<table>
+					<tbody>
 						<tr>
-						<td colspan="2" class="Login_Table_Cell_Input_Button"><button type="submit" class="login_button" id="login_box_button">Log in</button></td>
-					</tr>
-				</tbody>
-			</table>
-		</form>
-	</center>
+							<td>Name</td>
+							<td><input type="text" name="Login" maxlength="30"></td>
+						</tr>
+						<tr>
+							<td >Password</td>
+							<td ><input type="password" name="Password" maxlength="30"></td>
+						</tr>
+							<tr>
+							<td colspan="2"><button type="submit" >Log in</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</center>
+	</body>
 </html>
