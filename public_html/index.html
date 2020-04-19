@@ -1,16 +1,46 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-  <head>
-    <title>TODO supply a title</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>PLC -JS</title>
+
+			<link href="css/pjpl.css" type="text/css" rel="stylesheet"/>
+			
+			<!--
+			<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+			<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+			-->
+
+			<script src="js/conf.js"></script>
+
+    </head>
   <body>
-		<div>TODO write content</div>
-  </body>
+		<script>
+			if( document.cookie ){
+				window.location = cf.url.scada;
+			}
+		</script>
+
+		<center>
+			<!-- formularz logowania do sterownika wykonany na wzór formularza ze strony domyślnej sterownika -->
+			<form enctype="text/plain" action="https://192.168.1.150/FormLogin" method="POST" name="LoginForm" autocomplete="off">
+				<input type="hidden" name="Redirection" value="https://192.168.1.150/awp/scada/scada.html">
+				<table>
+					<tbody>
+						<tr>
+							<td>Name</td>
+							<td><input type="text" name="Login" maxlength="30"></td>
+						</tr>
+						<tr>
+							<td >Password</td>
+							<td ><input type="password" name="Password" maxlength="30"></td>
+						</tr>
+							<tr>
+							<td colspan="2"><button type="submit" >Log in</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</center>
+	</body>
 </html>
